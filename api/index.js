@@ -23,7 +23,7 @@ app.listen(3000,() =>{
 });
 
 app.use('/api/user' , userRouter);
-app.use('/api/auth', authRouter);
+app.use('/api/auth', authRouter); 
 
 
 // Created a MIDDLEWARE for Handling all the Errors
