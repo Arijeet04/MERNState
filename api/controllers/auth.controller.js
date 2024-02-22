@@ -38,6 +38,8 @@ export const signin = async (req , res , next) =>{
     }
 };
 
+
+//GOOGLE SIGN IN LOGIC 
 export const google = async (req , res , next) =>{
     try {
         const user = await User.findOne({email:req.body.email})
@@ -50,7 +52,7 @@ export const google = async (req , res , next) =>{
                 .status(200)
                 .json(rest);
         }else{
-
+            //Creating new User by generating some random password for the USER
             const generatedPassword = Math.random().toString(36).slice(-8)+ Math.random().toString(36).slice(-8);
             const hashedPassword =bcryptjs.hashSync(generatedPassword,10);
             const newUser = new User({username: req.body.name.split("").join("").toLowerCase()+Math.random().toString(36).slice(-8), email: req.body.email, password: hashedPassword});
